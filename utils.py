@@ -1,0 +1,28 @@
+def read_file(file):
+    with open(file, encoding='utf-8') as f:
+        for i in f.readlines():
+            text_rstrip = i.rstrip()
+            text = text_rstrip.split(' ')[:9]
+            yield " ".join(text)
+
+
+def answer(cmd, value, files):
+    if cmd == 'filter':
+        res = filter(lambda x: value in x, read_file(files))
+        return "\n".join(list(res))
+
+    if cmd == 'map':
+        res = map(lambda x: x.split(" ")[int(value)], list(read_file(files)))
+        return "\n".join(list(res))
+
+    if cmd == 'unique':
+        res = set(read_file(files))
+        return '\n'.join(res)
+
+    if cmd == 'sort':
+        res = sorted(read_file(files))
+        return '\n'.join(res)
+
+    if cmd == "limit":
+        res = list(read_file(files))[:int(value)]
+        return '\n'.join(res)
