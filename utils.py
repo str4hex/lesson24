@@ -32,3 +32,7 @@ def answer(cmd, value, files):
         res = list(read_file(files))[:int(value)]
         return '\n'.join(res)
 
+    if cmd == "regex":
+        regex = re.compile(value)
+        res = list(filter(lambda x: regex.search(x), read_file(files)))
+        return '\n'.join(res)
