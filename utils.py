@@ -1,9 +1,14 @@
+import re
+
+
 def read_file(file):
     with open(file, encoding='utf-8') as f:
-        for i in f.readlines():
-            text_rstrip = i.rstrip()
-            text = text_rstrip.split(' ')[:9]
-            yield " ".join(text)
+        while True:
+            try:
+                line = next(f).rstrip().split(" ")[:9]
+                yield " ".join(line)
+            except StopIteration:
+                break
 
 
 def answer(cmd, value, files):
@@ -25,4 +30,9 @@ def answer(cmd, value, files):
 
     if cmd == "limit":
         res = list(read_file(files))[:int(value)]
+        return '\n'.join(res)
+
+    if cmd == "regex":
+        regex = re.compile(value)
+        res = list(filter(lambda x: regex.search(x), read_file(files)))
         return '\n'.join(res)

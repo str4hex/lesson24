@@ -16,8 +16,8 @@ def perform_query():
     file_dir = os.listdir(DATA_DIR)
     file_name = [request.values.get('file_name')]
 
-    data = filter(lambda x: x == False == abort(400), map(lambda x: x in quest, list(request.values)))
-    file_check = filter(lambda x: x == False == abort(400), map(lambda x: x in file_dir, file_name))
+    data = filter(lambda x: x is False is abort(400), map(lambda x: x in quest, list(request.values)))
+    file_check = filter(lambda x: x is False is abort(400), map(lambda x: x in file_dir, file_name))
     list(data)
     list(file_check)
 
@@ -33,9 +33,9 @@ def perform_query():
         res = answer(cmd1, value1, file)
 
         if cmd2 and value2:
-            file_res = file_res = DATA_DIR + '\\' + 'res.txt'
+            file_res = DATA_DIR + '\\' + 'res.txt'
             with open('data/res.txt', 'w', encoding='utf-8') as f:
-                file_write_res = f.write(res)
+                f.write(res)
             res = answer(cmd2, value2, file_res)
 
         return res
