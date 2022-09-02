@@ -37,7 +37,6 @@ def perform_query():
             with open('data/res.txt', 'w', encoding='utf-8') as f:
                 f.write(res)
             res = answer(cmd2, value2, file_res)
-
         return res
 
     # получить параметры query и file_name из request.args, при ошибке вернуть ошибку 400

@@ -1,7 +1,7 @@
 import re
 
 
-def read_file(file):
+def read_file(file: str) -> str:
     with open(file, encoding='utf-8') as f:
         while True:
             try:
@@ -11,7 +11,8 @@ def read_file(file):
                 break
 
 
-def answer(cmd, value, files):
+def answer(cmd: str, value: [str, int], files: str) -> str:
+
     if cmd == 'filter':
         res = filter(lambda x: value in x, read_file(files))
         return "\n".join(list(res))
