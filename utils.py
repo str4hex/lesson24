@@ -1,7 +1,9 @@
 import re
+from typing import Generator
 
 
-def read_file(file: str) -> str:
+def read_file(file: str) -> Generator:
+
     with open(file, encoding='utf-8') as f:
         while True:
             try:
@@ -11,7 +13,7 @@ def read_file(file: str) -> str:
                 break
 
 
-def answer(cmd: str, value: [str, int], files: str) -> str:
+def answer(cmd: str, value: str, files: str) -> str:
 
     if cmd == 'filter':
         res = filter(lambda x: value in x, read_file(files))

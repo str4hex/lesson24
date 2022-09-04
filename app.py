@@ -1,5 +1,5 @@
 import os
-
+from werkzeug import Response
 from flask import Flask, request, abort
 from utils import answer
 
@@ -10,7 +10,7 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 
 
 @app.route("/perform_query", methods=["POST"])
-def perform_query():
+def perform_query() -> Response:
     quest = ['file_name', 'cmd1', 'value1', 'cmd2', 'value2']
 
     file_dir = os.listdir(DATA_DIR)
